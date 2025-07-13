@@ -67,18 +67,18 @@ export default function AIAnalysisPage() {
     setError(null);
 
     try {
-      const response = await fetch(
-        `${
-          process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000"
-        }/api/ai/comprehensive-analysis`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(crawlData),
-        }
-      );
+      // Use localhost for local development, Render URL for production
+      const backendUrl = process.env.NODE_ENV === 'development' 
+        ? 'http://localhost:4000' 
+        : (process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4000');
+        
+      const response = await fetch(`${backendUrl}/api/ai/comprehensive-analysis`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(crawlData),
+      });
 
       if (!response.ok) {
         throw new Error("AI analysis failed");

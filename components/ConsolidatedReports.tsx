@@ -260,11 +260,15 @@ export default function IndividualReports() {
             <button
               onClick={async () => {
                 try {
+                  // Use localhost for local development, Render URL for production
+                  const backendUrl =
+                    process.env.NODE_ENV === "development"
+                      ? "http://localhost:4000"
+                      : process.env.NEXT_PUBLIC_BACKEND_URL ||
+                        "http://localhost:4000";
+
                   const response = await fetch(
-                    `${
-                      process.env.NEXT_PUBLIC_BACKEND_URL ||
-                      "http://localhost:4000"
-                    }/api/seo-checklist/pdf`
+                    `${backendUrl}/api/seo-checklist/pdf`
                   );
                   if (response.ok) {
                     const blob = await response.blob();
@@ -387,15 +391,19 @@ export default function IndividualReports() {
                         <div className="flex flex-col gap-2">
                           {/* Original Excel */}
                           <button
-                            onClick={() =>
+                            onClick={() => {
+                              // Use localhost for local development, Render URL for production
+                              const backendUrl =
+                                process.env.NODE_ENV === "development"
+                                  ? "http://localhost:4000"
+                                  : process.env.NEXT_PUBLIC_BACKEND_URL ||
+                                    "http://localhost:4000";
+
                               window.open(
-                                `${
-                                  process.env.NEXT_PUBLIC_BACKEND_URL ||
-                                  "http://localhost:4000"
-                                }${report.filePath}`,
+                                `${backendUrl}${report.filePath}`,
                                 "_blank"
-                              )
-                            }
+                              );
+                            }}
                             className="flex items-center gap-2 text-blue-600 hover:text-blue-800 text-sm font-medium"
                           >
                             <FaFileExcel className="text-sm" />

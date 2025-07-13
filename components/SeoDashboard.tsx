@@ -198,10 +198,14 @@ const DATA_KEYS: { [key: string]: string } = {
 };
 
 export default function SeoDashboard({ reportData }: { reportData: any }) {
+  // Use localhost for local development, Render URL for production
+  const backendUrl =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:4000"
+      : process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000";
+
   const excelUrl = reportData?.downloadUrl
-    ? `${process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000"}${
-        reportData.downloadUrl
-      }`
+    ? `${backendUrl}${reportData.downloadUrl}`
     : null;
   const data = reportData?.data || {};
   const [activeTab, setActiveTab] = useState(TABS[0].name);

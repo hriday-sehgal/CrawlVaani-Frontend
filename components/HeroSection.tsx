@@ -31,11 +31,15 @@ export default function HeroSection() {
           <button
             onClick={async () => {
               try {
+                // Use localhost for local development, Render URL for production
+                const backendUrl =
+                  process.env.NODE_ENV === "development"
+                    ? "http://localhost:4000"
+                    : process.env.NEXT_PUBLIC_BACKEND_URL ||
+                      "http://localhost:4000";
+
                 const response = await fetch(
-                  `${
-                    process.env.NEXT_PUBLIC_BACKEND_URL ||
-                    "http://localhost:4000"
-                  }/api/seo-checklist/pdf`
+                  `${backendUrl}/api/seo-checklist/pdf`
                 );
                 if (response.ok) {
                   const blob = await response.blob();

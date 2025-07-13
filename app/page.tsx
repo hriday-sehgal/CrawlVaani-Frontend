@@ -46,23 +46,20 @@ export default function Home() {
     }
     setLoading(true);
     try {
-      const res = await fetch(
-        `${
-          process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000"
-        }/api/crawl`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ url }),
-        }
-      );
+      // Use localhost for local development, Render URL for production
+      const backendUrl =
+        process.env.NODE_ENV === "development"
+          ? "http://localhost:4000"
+          : process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000";
+
+      const res = await fetch(`${backendUrl}/api/crawl`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url }),
+      });
       const data = await res.json();
       if (!data.success) throw new Error(data.error || "Crawl failed");
-      setDownloadUrl(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000"}${
-          data.downloadUrl
-        }`
-      );
+      setDownloadUrl(`${backendUrl}${data.downloadUrl}`);
     } catch (err: any) {
       setError(err.message || "Crawl failed");
     } finally {
