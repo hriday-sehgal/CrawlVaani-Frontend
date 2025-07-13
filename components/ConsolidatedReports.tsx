@@ -452,8 +452,7 @@ export default function IndividualReports() {
           <p>
             <FaInfoCircle className="inline mr-1" />
             Reports are generated from comprehensive website crawls and include
-            detailed SEO analysis, performance metrics, and actionable
-            recommendations.
+            detailed SEO analysis and actionable recommendations.
           </p>
         </div>
       </div>

@@ -68,7 +68,7 @@ export default function SeoFormSection() {
           technicalSeo: data.data.technicalSeo,
           accessibilityIssues: data.data.accessibilityIssues,
           keywordStats: data.data.keywordStats,
-          pagePerformanceMetrics: data.data.pagePerformanceMetrics,
+          // pagePerformanceMetrics: data.data.pagePerformanceMetrics, // DISABLED - Lighthouse not available
           duplicateContentIssues: data.data.duplicateContentIssues,
           brokenResources: data.data.brokenResources,
           sitemapRobotsInfo: data.data.sitemapRobotsInfo,

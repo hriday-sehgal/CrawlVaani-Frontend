@@ -103,6 +103,8 @@ function renderCell(cellValue: any, columnName?: string, tabName?: string) {
     );
   }
 
+  // Performance Metrics rendering - DISABLED (Lighthouse not available)
+  /*
   if (
     (tabName === "Performance Metrics" || tabName === "Web Core Vitals") &&
     (value === "Good" ||
@@ -145,6 +147,7 @@ function renderCell(cellValue: any, columnName?: string, tabName?: string) {
       return <span className={`font-bold ${color}`}>{score}/100</span>;
     }
   }
+  */
 
   if (value.toLowerCase() === "yes") {
     return <FaCheckCircle className="text-green-500 text-lg" />;
@@ -171,8 +174,8 @@ const TABS = [
   { name: "Structured Data", icon: <FaCode /> },
   { name: "Technical SEO", icon: <FaSitemap /> },
   { name: "Missing SEO Issues", icon: <FaTimesCircle /> },
-  { name: "Performance Metrics", icon: <FaTachometerAlt /> },
-  { name: "Web Core Vitals", icon: <FaChartLine /> },
+  // { name: "Performance Metrics", icon: <FaTachometerAlt /> }, // DISABLED - Lighthouse not available
+  // { name: "Web Core Vitals", icon: <FaChartLine /> }, // DISABLED - Lighthouse not available
   { name: "Duplicate Content", icon: <FaInfoCircle /> },
   { name: "Broken Resources", icon: <FaTimesCircle /> },
 ];
@@ -191,8 +194,8 @@ const DATA_KEYS: { [key: string]: string } = {
   "Structured Data": "structuredData",
   "Technical SEO": "technicalSeo",
   "Missing SEO Issues": "missingSeoIssues",
-  "Performance Metrics": "pagePerformanceMetrics",
-  "Web Core Vitals": "webCoreVitals",
+  // "Performance Metrics": "pagePerformanceMetrics", // DISABLED - Lighthouse not available
+  // "Web Core Vitals": "webCoreVitals", // DISABLED - Lighthouse not available
   "Duplicate Content": "duplicateContentIssues",
   "Broken Resources": "brokenResources",
 };
@@ -213,7 +216,8 @@ export default function SeoDashboard({ reportData }: { reportData: any }) {
   // Get pages scanned count
   const pagesScanned = reportData?.pagesScanned || 0;
 
-  // Calculate performance summary
+  // Calculate performance summary - DISABLED (Lighthouse not available)
+  /*
   const performanceData = data.pagePerformanceMetrics || [];
   const webCoreVitalsData = data.webCoreVitals || [];
 
@@ -256,6 +260,7 @@ export default function SeoDashboard({ reportData }: { reportData: any }) {
           ) / performanceData.length
         )
       : 0;
+  */
 
   const getScoreColor = (score: number) => {
     return score >= 90
@@ -332,7 +337,8 @@ export default function SeoDashboard({ reportData }: { reportData: any }) {
         </div>
       </div>
 
-      {/* Performance Summary */}
+      {/* Performance Summary - DISABLED (Lighthouse not available) */}
+      {/*
       {performanceData.length > 0 && (
         <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200">
           <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
@@ -381,6 +387,7 @@ export default function SeoDashboard({ reportData }: { reportData: any }) {
           </div>
         </div>
       )}
+      */}
 
       <div className="flex flex-wrap gap-2 border-b-2 border-gray-200 pb-2 mb-6">
         {TABS.map((tab) => (
