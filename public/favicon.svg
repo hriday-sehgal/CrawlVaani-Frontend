@@ -1,0 +1,16 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-gradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8C88F8"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <!-- Magnifying glass (bigger, bolder) -->
+  <circle cx="28" cy="28" r="20" stroke="url(#cv-gradient)" stroke-width="7" fill="#fff"/>
+  <rect x="38" y="38" width="16" height="7" rx="3.5" transform="rotate(45 38 38)" fill="url(#cv-gradient)"/>
+  <!-- Globe inside (bolder lines) -->
+  <circle cx="28" cy="28" r="10" stroke="url(#cv-gradient)" stroke-width="2.5" fill="none"/>
+  <ellipse cx="28" cy="28" rx="10" ry="3.5" stroke="url(#cv-gradient)" stroke-width="1.5" fill="none"/>
+  <path d="M28,18 Q38,28 28,38" stroke="url(#cv-gradient)" stroke-width="1.5" fill="none"/>
+  <path d="M28,18 Q18,28 28,38" stroke="url(#cv-gradient)" stroke-width="1.5" fill="none"/>
+</svg>

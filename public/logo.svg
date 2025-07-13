@@ -1,0 +1,27 @@
+<svg width="220" height="140" viewBox="0 0 220 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cv-gradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8C88F8"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <!-- Magnifying glass (main circle) -->
+  <circle cx="110" cy="60" r="30" stroke="url(#cv-gradient)" stroke-width="7" fill="#fff"/>
+  <!-- Magnifying glass handle -->
+  <rect x="130" y="85" width="22" height="7" rx="3.5" transform="rotate(45 130 85)" fill="url(#cv-gradient)"/>
+  <!-- Globe with prominent cursor pointer inside magnifying glass -->
+  <g>
+    <!-- Globe outer circle -->
+    <circle cx="110" cy="60" r="12" stroke="url(#cv-gradient)" stroke-width="2.5" fill="none"/>
+    <!-- Simple latitude line -->
+    <ellipse cx="110" cy="60" rx="12" ry="4" stroke="url(#cv-gradient)" stroke-width="1.2" fill="none"/>
+    <!-- Simple longitude lines -->
+    <path d="M110,48 Q120,60 110,72" stroke="url(#cv-gradient)" stroke-width="1.2" fill="none"/>
+    <path d="M110,48 Q100,60 110,72" stroke="url(#cv-gradient)" stroke-width="1.2" fill="none"/>
+    <!-- Globe only, no pointer -->
+  </g>
+  <!-- Brand Name -->
+  <text x="50%" y="135" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="26" font-weight="bold" fill="url(#cv-gradient)" letter-spacing="1">
+    CrawlVaani
+  </text>
+</svg>
