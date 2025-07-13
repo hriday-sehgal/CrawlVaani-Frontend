@@ -32,7 +32,10 @@ export default function HeroSection() {
             onClick={async () => {
               try {
                 const response = await fetch(
-                  "http://localhost:4000/api/seo-checklist/pdf"
+                  `${
+                    process.env.NEXT_PUBLIC_BACKEND_URL ||
+                    "http://localhost:4000"
+                  }/api/seo-checklist/pdf`
                 );
                 if (response.ok) {
                   const blob = await response.blob();

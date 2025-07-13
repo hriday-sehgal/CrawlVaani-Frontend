@@ -199,7 +199,9 @@ const DATA_KEYS: { [key: string]: string } = {
 
 export default function SeoDashboard({ reportData }: { reportData: any }) {
   const excelUrl = reportData?.downloadUrl
-    ? `http://localhost:4000${reportData.downloadUrl}`
+    ? `${process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000"}${
+        reportData.downloadUrl
+      }`
     : null;
   const data = reportData?.data || {};
   const [activeTab, setActiveTab] = useState(TABS[0].name);

@@ -68,7 +68,9 @@ export default function AIAnalysisPage() {
 
     try {
       const response = await fetch(
-        "http://localhost:4000/api/ai/comprehensive-analysis",
+        `${
+          process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000"
+        }/api/ai/comprehensive-analysis`,
         {
           method: "POST",
           headers: {

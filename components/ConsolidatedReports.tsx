@@ -261,7 +261,10 @@ export default function IndividualReports() {
               onClick={async () => {
                 try {
                   const response = await fetch(
-                    "http://localhost:4000/api/seo-checklist/pdf"
+                    `${
+                      process.env.NEXT_PUBLIC_BACKEND_URL ||
+                      "http://localhost:4000"
+                    }/api/seo-checklist/pdf`
                   );
                   if (response.ok) {
                     const blob = await response.blob();
@@ -386,7 +389,10 @@ export default function IndividualReports() {
                           <button
                             onClick={() =>
                               window.open(
-                                `http://localhost:4000${report.filePath}`,
+                                `${
+                                  process.env.NEXT_PUBLIC_BACKEND_URL ||
+                                  "http://localhost:4000"
+                                }${report.filePath}`,
                                 "_blank"
                               )
                             }
