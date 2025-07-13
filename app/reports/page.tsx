@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import IndividualReports from "../../components/ConsolidatedReports";
 
-export default function ReportsPage() {
+// Separate component for search params logic
+function TokenChecker() {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [loading, setLoading] = useState(true);
   const searchParams = useSearchParams();
@@ -68,4 +69,23 @@ export default function ReportsPage() {
   }
 
   return <IndividualReports />;
+}
+
+export default function ReportsPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+              <p className="mt-4 text-gray-600">Loading...</p>
+            </div>
+          </div>
+        </div>
+      }
+    >
+      <TokenChecker />
+    </Suspense>
+  );
 }

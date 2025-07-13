@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import HeroSection from "../components/HeroSection";
@@ -10,14 +10,10 @@ import SeoFormSection from "../components/SeoFormSection";
 import CtaSection from "../components/CtaSection";
 import FaqSection from "../components/FaqSection";
 
-export default function Home() {
-  const [url, setUrl] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [downloadUrl, setDownloadUrl] = useState("");
+// Separate component for search params logic
+function HashNavigation() {
   const searchParams = useSearchParams();
 
-  // Handle hash navigation when coming from other pages
   useEffect(() => {
     const hash = window.location.hash;
     if (hash) {
@@ -30,6 +26,15 @@ export default function Home() {
       }, 100);
     }
   }, [searchParams]);
+
+  return null;
+}
+
+export default function Home() {
+  const [url, setUrl] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [downloadUrl, setDownloadUrl] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,6 +72,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
+      <Suspense fallback={null}>
+        <HashNavigation />
+      </Suspense>
       <HeroSection />
       <FeaturesSection />
       <HowItWorksSection />
