@@ -1,4 +1,7 @@
 User-agent: *
-Allow: /
+Disallow: /
+
+# Block all crawlers from indexing this site
+# This is a development/testing site - not ready for public indexing 
 
 Sitemap: https://crawlvaani.vercel.app/sitemap.xml 
